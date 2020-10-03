@@ -12,7 +12,24 @@
       <h6 class="card-subtitle mb-2 text-muted">
         Created on: {{ task_local_created_date }}
       </h6>
-      <button type="button" class="btn btn-primary">Update</button>
+      <div class="row">
+        <button
+          type="button"
+          class="btn btn-success"
+          title="Update"
+          (click)="updateTask()"
+        >
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          title="Delete"
+          (click)="deleteTask()"
+        >
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
     <div class="card-body">
       <p class="card-text">

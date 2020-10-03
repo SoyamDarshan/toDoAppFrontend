@@ -1,0 +1,58 @@
+<form>
+  <div class="form-group">
+    <label for="subject">Subject</label>
+    <input
+      type="text"
+      class="form-control"
+      id="subject"
+      placeholder="Task Name"
+      [(ngModel)]="task_subject"
+      name="task_subject"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="Description">Description</label>
+    <textarea
+      class="form-control"
+      id="Description"
+      placeholder="About the task"
+      [(ngModel)]="task_description"
+      name="task_description"
+    >
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="label">Label</label>
+    <input
+      type="text"
+      class="form-control"
+      id="label"
+      placeholder="Add a label for the task"
+      [(ngModel)]="task_labels"
+      name="task_labels"
+    />
+  </div>
+  <!-- <div class="form-group">
+    <label for="label">Subject</label>
+    <input
+      type="text"
+      class="form-control"
+      id="label"
+      placeholder="Add a label for the task"
+    />
+  </div> -->
+  <div class="form-group">
+    <label for="date">Due Date</label>
+    <input
+      class="form-control"
+      type="date"
+      id="date"
+      [(ngModel)]="task_due_date"
+      name="task_due_date"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+    Submit
+  </button>
+</form>

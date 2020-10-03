@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import { TodoListService } from "../todo-list/todo-list.service";
 
 @Component({
   selector: "app-todo-list-item",
@@ -7,7 +8,9 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class TodoListItemComponent implements OnInit {
   @Input() todo_item;
-  constructor() {}
+  @Output() reload_component = new EventEmitter();
+
+  constructor(private todoListService: TodoListService) {}
   task_description = "";
   task_created_date = new Date();
   task_updated_date = new Date();
@@ -28,10 +31,11 @@ export class TodoListItemComponent implements OnInit {
     this.task_labels = this.todo_item.task_labels;
     this.task_status = this.todo_item.task_status;
     this.task_subject = this.todo_item.task_subject;
-
     this.task_created_date = new Date(this.todo_item.task_created_date);
     this.task_updated_date = new Date(this.todo_item.task_updated_date);
     this.task_due_date = new Date(this.todo_item.task_due_date);
+
+    console.log(this.task_id);
 
     if (this.task_status === "completed") {
       this.task_status_class = "completed";
@@ -49,5 +53,16 @@ export class TodoListItemComponent implements OnInit {
     this.task_local_created_date = this.task_created_date.toLocaleString();
     this.task_local_updated_date = this.task_updated_date.toLocaleString();
     this.task_local_due_date = this.task_due_date.toLocaleString();
+  }
+  deleteTask() {
+    console.log(this.task_id);
+    this.todoListService
+      .delete_todo_list("working", this.task_id)
+      .subscribe((data) => {
+        this.reload_component.emit(true);
+      }),
+      (err) => {
+        console.log("Error");
+      };
   }
 }

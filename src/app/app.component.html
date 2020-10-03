@@ -1,1 +1,11 @@
-<app-todo-list></app-todo-list>
+<div class="row">
+  <div class="col-8">
+    <app-todo-list></app-todo-list>
+  </div>
+  <div class="col-3">
+    <app-todo-item-form
+      [(form_type)]="add"
+      (onFilter)="update()"
+    ></app-todo-item-form>
+  </div>
+</div>
