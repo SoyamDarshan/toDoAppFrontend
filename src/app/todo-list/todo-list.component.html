@@ -1,0 +1,14 @@
+<!-- <div class="container"> -->
+<button type="button" class="btn btn-success" (click)="onShow()">
+  Add a new task
+</button>
+<div class="row todo-list">
+  <div *ngFor="let item of todo_list">
+    <app-todo-list-item [(todo_item)]="item"></app-todo-list-item>
+  </div>
+</div>
+<!-- <app-todo-task-form
+  [(show)]="showModal"
+  [(type)]="form_type"
+></app-todo-task-form> -->
+<!-- </div> -->

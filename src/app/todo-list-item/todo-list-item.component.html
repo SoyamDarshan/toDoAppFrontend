@@ -1,0 +1,33 @@
+<div class="col">
+  <div
+    class="card"
+    [ngClass]="{
+      'border-success': task_status_class == 'completed',
+      'border-danger': task_status_class == 'past_due_date',
+      'border-primary': task_status_class == 'in_progress'
+    }"
+  >
+    <div class="card-header">
+      <h5 class="card-title">{{ task_subject }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Created on: {{ task_local_created_date }}
+      </h6>
+      <button type="button" class="btn btn-primary">Update</button>
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        {{ task_description }}
+      </p>
+    </div>
+
+    <div class="card-footer text-muted">
+      <h6 class="card-subtitle mb-2 text-muted text-left">
+        Last updated on: {{ task_local_updated_date }}
+      </h6>
+
+      <h6 class="card-subtitle mb-2 text-muted text-left">
+        Due on: {{ task_local_due_date }}
+      </h6>
+    </div>
+  </div>
+</div>
